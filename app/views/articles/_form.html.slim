@@ -5,5 +5,15 @@
       ul
         - @article.errors.full_messages.each do |message|
           li = message
-
+  .form-group
+    = f.label :title, 'タイトル'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :category, 'カテゴリ'
+    = f.select :category, %i[a b c], {selected: 'b'}, class: 'form-control'
+    = f.select :category, [['a', 1], ['b', 2], ['c', 3]], {}, class: 'form-control'
+  .form-group
+    = f.label :
+  .form-group
+  .form-group
   .actions = f.submit
