@@ -13,8 +13,18 @@
     = f.select :category, %i[a b c], {selected: 'b'}, class: 'form-control'
     = f.select :category, [['a', 1], ['b', 2], ['c', 3]], {}, class: 'form-control'
   .form-group
+    = f.label :tag, 'タグ'
     = f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t|
       .form-check
-        = t.check_box class: 'form-check-input'
+        = t.check_box checked: t.object.name == '技術', class: 'form-check-input'
         = t.label class: 'form-check-label'
+  .form-group
+    .form-check
+      = f.label :is_publish, '公開状況'
+    .form-check
+      = f.radio_button :is_publish, true, class: 'form-check-input'
+      = f.label :is_publish_true, '公開', class: 'form-check-label'
+    .form-check
+      = f.radio_button :is_publish, false, checked: true, class: 'form-check-input'
+      = f.label :is_publish_false, '下書き', class: 'form-check-label'
   .actions = f.submit
