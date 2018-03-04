@@ -13,7 +13,8 @@
     = f.select :category, %i[a b c], {selected: 'b'}, class: 'form-control'
     = f.select :category, [['a', 1], ['b', 2], ['c', 3]], {}, class: 'form-control'
   .form-group
-    = f.label :
-  .form-group
-  .form-group
+    = f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t|
+      .form-check
+        = t.check_box class: 'form-check-input'
+        = t.label class: 'form-check-label'
   .actions = f.submit

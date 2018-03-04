@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-  belongs_to :article
+  has_many :article_tags, dependent: :destroy
+  has_many :articles, through: :article_tags
 end
